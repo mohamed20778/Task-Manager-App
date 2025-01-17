@@ -7,7 +7,7 @@ class AuthCubit extends Cubit<AuthStates>{
   final Dio dio=Dio();
 
   AuthCubit():super(AuthInitial());
-  Future<void>Login(String username,String password)
+  Future<void>Login( {required String username, required String password})
   async {
     emit(Authloading());
     try{

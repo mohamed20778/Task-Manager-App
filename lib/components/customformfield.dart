@@ -9,19 +9,19 @@ class CustomformField extends StatelessWidget {
   bool isSecure=false;
   TextEditingController? ourController;
 
-   CustomformField({super.key,required this.hintText,required this.firstIcon,this.lastIcon,required this.isSecure,this.ourController,});
+   CustomformField({super.key,required this.hintText,required this.firstIcon,this.lastIcon,required this.isSecure,this.ourController,required this.ourValidator});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      // validator:ourValidator,
+      validator:ourValidator,
       controller: ourController,
       obscureText: isSecure,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15.0),
-          borderSide:  BorderSide(color:tdBlue,width:2),
+          borderSide:  BorderSide(color:const Color.fromARGB(255, 84, 69, 239),width:2),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15.0),
@@ -37,7 +37,7 @@ class CustomformField extends StatelessWidget {
         suffixIcon: lastIcon,
         hintText: hintText,
         hintStyle: TextStyle(
-          color: tdGrey,
+          color: const Color.fromARGB(255, 113, 113, 113),
           fontSize: 15
         ),
       ),

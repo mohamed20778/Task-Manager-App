@@ -1,17 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/bloc/auth_cubit.dart';
-import 'package:flutter_application_1/bloc/auth_states.dart';
-import 'package:flutter_application_1/components/customButton.dart';
-import 'package:flutter_application_1/components/customformfield.dart';
+import 'package:flutter_application_1/bloc/authcubit/auth_cubit.dart';
+import 'package:flutter_application_1/bloc/authcubit/auth_states.dart';
+import 'package:flutter_application_1/bloc/authcubit/components/customButton.dart';
+import 'package:flutter_application_1/bloc/authcubit/components/customformfield.dart';
 import 'package:flutter_application_1/constants/colors.dart';
 import 'package:flutter_application_1/constants/constant.dart';
+import 'package:flutter_application_1/models/todoModel.dart';
 import 'package:flutter_application_1/screens/home_page.dart';
+import 'package:flutter_application_1/services/todoservice.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class LoginPage extends StatelessWidget {
-  TextEditingController userNameController=TextEditingController();
-  TextEditingController PasswordController=TextEditingController();
+class LoginPage extends StatefulWidget {
+
    LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  TodoModel? todoModel;
+  TextEditingController userNameController=TextEditingController();
+
+  TextEditingController PasswordController=TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AuthCubit>(
@@ -45,6 +57,7 @@ class LoginPage extends StatelessWidget {
                   ),
                   SizedBox(height: MediaQuery.of(context).size.width*0.8),
                   CustomformField(
+                    
                     ourController: userNameController,
                     isSecure: false,
                     hintText: 'UserName',
@@ -64,8 +77,10 @@ class LoginPage extends StatelessWidget {
                   ),
                   SizedBox(height: MediaQuery.of(context).size.width*0.1),
                   Center(child: CustomButton(text: 'Login', onPressed: (){
-                  AuthCubit().Login(username: userNameController.text, password: PasswordController.text);
-                  }))
+                  
+                    
+                  BlocProvider.of<AuthCubit>(context).Login(username: userNameController.text, password: PasswordController.text);
+                                  }))
               
                 ],
               ),

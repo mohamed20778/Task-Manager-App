@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/colors.dart';
+import 'package:flutter_application_1/models/todoModel.dart';
 
 class TodoItem extends StatelessWidget {
-  const TodoItem({super.key});
+   TodoItem({super.key,required this.todoModel});
+  TodoModel todoModel ;
+
 
   @override
   Widget build(BuildContext context) {
+    bool isChecked = todoModel.isDone!;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -15,13 +19,13 @@ class TodoItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(10)
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconButton(
               onPressed: () {},
-              icon: Icon(Icons.check_box, color: tdBlue),
+              icon: Icon(isChecked ? Icons.check_box : Icons.check_box_outline_blank, color: isChecked ? tdBlue : tdGrey),
             ),
-            Text('going to visit famdsasasdsdsdsily', style: TextStyle(color: tdBlack)),
+            Flexible(child: Text(todoModel.todo!, style: TextStyle(color: tdBlack,overflow: TextOverflow.ellipsis,)),),
             Container(
               width: 40,
               height: 40,

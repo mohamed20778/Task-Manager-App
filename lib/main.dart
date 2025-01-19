@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/bloc/todoCubit/todo_cubit.dart';
 import 'package:flutter_application_1/screens/loginpage.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(BlocProvider(
+    create: (context) => TodoCubit(),
+    child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

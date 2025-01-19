@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/colors.dart';
+import 'package:flutter_application_1/services/todoservice.dart';
 
 class CustomformField extends StatelessWidget {
   String? Function(String?)? ourValidator;
@@ -12,8 +13,14 @@ class CustomformField extends StatelessWidget {
    CustomformField({super.key,required this.hintText,required this.firstIcon,this.lastIcon,required this.isSecure,this.ourController,required this.ourValidator});
 
   @override
+
+  
   Widget build(BuildContext context) {
     return TextFormField(
+      onFieldSubmitted: (value){
+        Todoservice service=Todoservice();
+        service.gettodoService();
+      },
       validator:ourValidator,
       controller: ourController,
       obscureText: isSecure,

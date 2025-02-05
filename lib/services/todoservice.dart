@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -15,7 +14,9 @@ class Todoservice {
       for(int i=0;i<tododata.length;i++){
         todolist.add(TodoModel.fromjson(tododata[i]));
       }
-      print(todolist.length);
+      if (kDebugMode) {
+        print(todolist.length);
+      }
     } on Exception catch (e) {
       if (kDebugMode) {
         print(e);

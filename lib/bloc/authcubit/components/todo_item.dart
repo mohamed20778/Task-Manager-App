@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/colors.dart';
 import 'package:flutter_application_1/models/todoModel.dart';
 
+// ignore: must_be_immutable
 class TodoItem extends StatelessWidget {
    TodoItem({super.key,required this.todoModel});
   TodoModel todoModel ;

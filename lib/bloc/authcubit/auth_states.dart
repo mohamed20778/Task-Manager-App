@@ -1,5 +1,11 @@
-abstract class AuthStates {}
+import 'package:flutter/material.dart';
+
+sealed class AuthStates {}
 final class AuthInitial extends AuthStates {}
-class Authloading extends AuthStates{}
-class AuthSuccess extends AuthStates{}
-class Authfailure extends AuthStates{}
+final class Authloading extends AuthStates{}
+final class AuthSuccess extends AuthStates{}
+final class Authfailure extends AuthStates{
+  String errMessage;
+
+  Authfailure({required this.errMessage});
+}
